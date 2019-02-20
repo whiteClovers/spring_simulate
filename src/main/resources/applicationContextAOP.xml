@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd 
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop-4.2.xsd
+        ">
+    <!-- 
+    	xmlns:aop="http://www.springframework.org/schema/aop"
+    	
+    	http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop-4.2.xsd -->
+        
+    <!-- <bean id="grade" class="com.xq.fstore.bas.entity.Grade">
+    	<property name="gradeId" value="03"></property>
+    	<property name="gradeName" value="大3"></property>
+    	
+    </bean> -->
+    
+    <!-- <bean id="gradeDao" class="com.xq.fstore.bas.daoImp.GradeDaoImp" /> 
+    
+    <bean id="handlerAll" class="com.xq.fstore.bas.framework.HandlerAll" />
+    
+    <aop:config>
+    	<aop:aspect id="aspectHandlerAll" ref="handlerAll" >
+    		<aop:pointcut expression="execution(* com.xq.fstore.*.daoImp.*DaoImp.*(..))" 
+    			id="pointCutAround"/>
+    		
+    		<aop:around method="aroundMethod" pointcut-ref="pointCutAround" />
+    		
+    		<aop:after-returning method="afterReturningMethod" pointcut-ref="pointCutAround" />
+    		<aop:after-throwing method="afterThrowingMethod" pointcut-ref="pointCutAround" />
+    		
+    		<aop:after method="afterMethod" pointcut-ref="pointCutAround" />
+    		<aop:before method="beforeMethod" pointcut-ref="pointCutAround" />
+    		
+    	</aop:aspect>
+    </aop:config> -->
+    
+    <!-- <aop:aspectj-autoproxy expose-proxy="false" /> -->
+    
+    <bean id="grade" class="com.xq.fstore.bas.entity.Grade">
+    	<property name="gradeId" value="001"></property>
+    	<property name="gradeName" value="张三"></property>
+    </bean>
+    
+    <aop:aspectj-autoproxy expose-proxy="false" />
+    
+    <bean id="gradeDao" class="com.xq.fstore.bas.daoImp.GradeDaoImp" /> 
+    
+    <bean id="aroundHandler" class="com.xq.fstore.bas.framework.MyHandler" />
+    
+    <!-- 默认是false jdk proxy；true为cglib -->
+    <aop:config>
+    	<aop:aspect id="aspectAroundHandler" ref="aroundHandler" >
+    		<aop:pointcut expression="execution(* com.xq.fstore.*.daoImp.*DaoImp.*(..))" 
+    			id="pointCutAround"/>
+    		
+    		<aop:around method="aroundMethod" pointcut-ref="pointCutAround" />
+    		
+    		<aop:after-returning method="afterReturningMethod" pointcut-ref="pointCutAround" />
+    		<aop:after-throwing method="afterThrowingMethod" pointcut-ref="pointCutAround" />
+    		
+    		<aop:before method="beforeMethod" pointcut-ref="pointCutAround" />
+    		<aop:after method="afterMethod" pointcut-ref="pointCutAround" />
+    		
+    	</aop:aspect>
+    </aop:config>
+    
+    <!-- <aop:aspectj-autoproxy expose-proxy="false" /> -->
+    <!-- <aop:config expose-proxy="false"> -->
+   
+</beans>

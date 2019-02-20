@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd ">
+    
+        
+    
+        
+        
+    <!-- 类工厂 --> 
+    <!-- <bean id="grade" class="com.xq.fstore.bas.factory.GradeClassFactory" factory-method="createGrade">
+    	<property name="gradeId" value="01"></property>
+    	<property name="gradeName" value="大1"></property>
+    	
+    </bean> -->
+    
+    <!-- 对象工厂 --> 
+    <bean id="objectFactory" class="com.xq.fstore.bas.factory.GradeObjectFactory" />
+    
+    <bean id="grade" factory-bean="objectFactory" factory-method="createGrade" scope="prototype" lazy-init="false">
+    	<property name="gradeId" value="02"></property>
+    	<property name="gradeName" value="大2"></property>
+    	
+    </bean>
+    
+    <bean id="grade2" class="com.xq.fstore.bas.entity.Grade" scope="singleton" >
+    	<property name="gradeId" value="03"></property>
+    	<property name="gradeName" value="大3"></property>
+    	
+    </bean>
+    
+    <!-- <bean id="student2" class="com.xq.fstore.bas.entity.Student" >
+    	<property name="studentId" value="555"></property>
+    	<property name="studentName" value="李四"></property>
+    	<property name="age" value="456"></property>
+    	<property name="date" value="2018-10-18"></property>
+    	
+    	<property name="bigDecimal" value="647.28"></property>
+
+		<property name="fum" value="647.28"></property>
+    	<property name="dum" value="647.28"></property>
+    	<property name="bum" value="-128"></property>
+    	<property name="sum" value="64"></property>
+    	<property name="lum" value="647"></property>
+    	<property name="boo" value="0"></property>
+    	<property name="ch" value="a"></property>
+    	
+    </bean> -->
+    
+     
+</beans>
